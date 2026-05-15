@@ -16,6 +16,7 @@ env:
   SERVICE_ACCOUNT_GH: ${{ vars.SERVICE_ACCOUNT_GH }}
   WIF_POOL_ID: ${{ vars.WIF_POOL_ID }} # Workload Identity Federation Pool
   WIF_POOL_PROVIDER: ${{ vars.WIF_POOL_PROVIDER }} # Workload Identity Federation Provider
+  PROJECT: ${{ vars.PROJECT }} # Cloud Run service name (same as repo name)
   UV_VERSION: 0.11.6 # Version of uv to install
 
 jobs:
@@ -50,13 +51,13 @@ jobs:
 
     - name: Build and Push to Artifact Registry
       run: |
-        IMAGE=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/cloud-run/app:${{ github.sha }}
+        IMAGE=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_PROJECT_ID }}/app:${{ github.sha }}
         docker build -t $IMAGE .
         docker push $IMAGE
 
     - name: Deploy Cloud Run Service (auth required and internal ingress)
       run: |
-        IMAGE=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/cloud-run/app:${{ github.sha }}
+        IMAGE=${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_PROJECT_ID }}/app:${{ github.sha }}
         gcloud run deploy ${{ env.PROJECT }} \
           --image=$IMAGE \
           --region=${{ env.GCP_REGION }} \
