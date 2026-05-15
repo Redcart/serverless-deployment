@@ -1,0 +1,15 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Variables
+*.auto.tfvars
+terraform.tfvars
+
+# Credentials
+*.json
+
+# Plans
+*.tfplan

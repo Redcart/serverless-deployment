@@ -1,0 +1,52 @@
+# -----------------------------------------------------------------------------
+# Example Terraform variables file
+# Copy this file to:
+#
+# variables.auto.tfvars
+#
+# Then adapt values to your own environment.
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# GCP project configuration
+# -----------------------------------------------------------------------------
+
+project_id     = "my-gcp-project"
+project_number = "123456789012"
+
+# -----------------------------------------------------------------------------
+# Regions
+# -----------------------------------------------------------------------------
+
+region        = "europe-west6"
+global_region = "EU"
+
+# -----------------------------------------------------------------------------
+# Terraform service account credentials
+# -----------------------------------------------------------------------------
+
+gcp_credentials = "path/to/sa_terraform_key.json"
+
+# -----------------------------------------------------------------------------
+# Service accounts
+# -----------------------------------------------------------------------------
+
+sa_terraform = "terraform@my-gcp-project.iam.gserviceaccount.com"
+
+sa_cloud_run = "cr-runtime@my-gcp-project.iam.gserviceaccount.com"
+
+# -----------------------------------------------------------------------------
+# Cloud Run container image
+# -----------------------------------------------------------------------------
+
+container_image = "europe-west6-docker.pkg.dev/my-gcp-project/cloud-run/app:latest"
+
+# -----------------------------------------------------------------------------
+# Secret Manager configuration
+# -----------------------------------------------------------------------------
+
+api_key_secret_name    = "API_KEY"
+
+# Prefer explicit versions over "latest"
+# to keep deployments deterministic.
+api_key_secret_version = "1"
