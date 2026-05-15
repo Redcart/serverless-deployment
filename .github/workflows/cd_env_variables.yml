@@ -16,7 +16,6 @@ env:
   SERVICE_ACCOUNT_GH: ${{ vars.SERVICE_ACCOUNT_GH }}
   WIF_POOL_ID: ${{ vars.WIF_POOL_ID }} # Workload Identity Federation Pool
   WIF_POOL_PROVIDER: ${{ vars.WIF_POOL_PROVIDER }} # Workload Identity Federation Provider
-  PROJECT: "cloud-run-with-cicd" # Cloud Run service name
   UV_VERSION: 0.11.6 # Version of uv to install
 
 jobs:
